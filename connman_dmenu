@@ -86,11 +86,6 @@ dmenu_ask() {
 	fi
 }
 
-if (( EUID != 0 )); then
-	dmenu_notify 'please run it as root'
-	exit 1
-fi
-
 get_services
 index="$(create_dmenu | dmenu -l 10 -i -p 'select wifi service' | sed 's/^ *//g' | cut -d ' ' -f 1)"
 
